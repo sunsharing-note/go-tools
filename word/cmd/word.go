@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// 定义目前单词所支持的转换模式枚举值
 const (
 	ModeUpper                      = iota + 1 // 全部转大写
 	ModeLower                                 // 全部转小写
@@ -17,6 +18,8 @@ const (
 
 var str string
 var mode int8
+
+// 对具体的单词子命进行设置和集成
 var desc = strings.Join([]string{
 	"该子命令支持各种单词格式转换，模式如下：",
 	"1: 全部单词转换为大写",
@@ -50,6 +53,7 @@ var wordCmd = &cobra.Command{
 	},
 }
 
+// 命令行参数的设置和初始化
 func init()  {
 	wordCmd.Flags().StringVarP(&str, "str", "s", "","请输入单词内容")
 	wordCmd.Flags().Int8VarP(&mode, "mode", "m", 0,"请输入单词转换模式")
